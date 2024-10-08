@@ -19,6 +19,7 @@ class Data{
 }
 
 
+
 class Name{
     private String name;
     public Name(String Name){
@@ -27,6 +28,18 @@ class Name{
     @Override
     public String toString(){
         return name;
+    }
+}
+
+
+
+class Generics<T>{
+    private T data;
+    public Generics (T data){
+        this.data=data;
+    }
+    public T getGEN(){
+        return data;
     }
 }
 
@@ -57,5 +70,27 @@ public class generic {
         // the thing written below may or may not through an error because internally JVM does so many toString() method call there may sometimes it can interupt the normal flow of application.
         Data y = new Data(new Name("capgemini"));
         System.out.println(y.getObject());
+
+
+
+        //Generics official syntax object wise, in standard used <T> which means Type.
+        Generics first = new Generics("hello world 1");
+        String str1 = first.getGEN().toString();
+        System.out.println(first.getGEN());
+        System.out.println(str1);
+
+        //Generics used as parameterized object of String. so that no object.toString() method is required.
+        Generics<String> second = new Generics<>("hello world 2");
+        String str2 = second.getGEN();
+        System.out.println(second.getGEN());
+        System.out.println(str2);
+
+        //Generics used as paramterized object of Integer. so that no object.toString() method is required.
+        Generics<Integer> third = new Generics<>(123);
+        int str3 = third.getGEN();
+        System.out.println(third.getGEN());
+        System.out.println(str3);
+
+
     }
 }
