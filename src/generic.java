@@ -1,6 +1,7 @@
 
 import java.util.*;
 
+//part 01
 class Data{
     private Object object;
 
@@ -19,7 +20,7 @@ class Data{
 }
 
 
-
+//part 02
 class Name{
     private String name;
     public Name(String Name){
@@ -32,7 +33,7 @@ class Name{
 }
 
 
-
+//part 03
 class Generics<T>{
     private T data;
     public Generics (T data){
@@ -43,7 +44,46 @@ class Generics<T>{
     }
 }
 
+//part 04
+/*
+     T - Type
+     E - Element
+     K - Key
+     N - Number
+     V - Value
+ */
+class doublegen<K,V>{
+    private K key;
+    private V value;
+    public doublegen(K key,V value){
+        this.key=key;
+        this.value=value;
+    }
+    public K getKey(){
+        return key;
+    }
+    public V getValue(){
+        return value;
+    }
+    @Override
+    public String toString(){
+        return "{Data{ Key : " +key+" Value : " + value+"} }";
+    }
+}
 
+//Part 05
+class genmethod{
+    public <E> void printListData(List<E> list){
+        for(E data : list){
+            System.out.println(data);
+        }
+    }
+    public <E> void printArrayData(E[] array){
+        for(E data : array){
+            System.out.println(data);
+        }
+    }
+}
 public class generic {
     public static void main(String[] args){
         System.out.println("hello world");
@@ -91,6 +131,24 @@ public class generic {
         System.out.println(third.getGEN());
         System.out.println(str3);
 
+        //doublegen is generic class where two generic parameter is used which is key value pair.
+        //object.toString() method is used to print the valaues of the actual object by System.out.println();
+        doublegen<Integer,String> s = new doublegen<>(0,"ayan haque");
+        System.out.println(s);
+
+        //Here is the overview of Generic methods in java, which takes list as input and print all the value of it, despite of the object type.
+        List<Integer> lone = new LinkedList<>();
+        lone.add(0);
+        lone.add(1);
+        lone.add(2);
+        lone.add(3);
+        lone.add(4);
+        lone.add(5);
+        new genmethod().printListData(lone);
+
+        //This is the Generic method which can print any type of array given to it.
+        String[] arr = {"hello","world"};
+        new genmethod().printArrayData(arr);
 
     }
 }
