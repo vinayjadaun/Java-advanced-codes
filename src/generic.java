@@ -69,6 +69,10 @@ class doublegen<K,V>{
     public String toString(){
         return "{Data{ Key : " +key+" Value : " + value+"} }";
     }
+    //Part 06 - Bounded type in generic.
+    public <N extends Number,E extends Name> void display(N number,E element){
+        System.out.println("Number: " +number + " Element: "+element);
+    }
 }
 
 //Part 05
@@ -149,6 +153,11 @@ public class generic {
         //This is the Generic method which can print any type of array given to it.
         String[] arr = {"hello","world"};
         new genmethod().printArrayData(arr);
+
+        // Generic bounded type which bound the object to accept some specific bound type of data.
+        //s.display("hello wrold","vinay jadaun");//this will through error since we extended the left with Number class.
+        s.display(01,new Name("vinay jadaun"));//this will not through not error because it is accepting the right parameter object type.
+
 
     }
 }
